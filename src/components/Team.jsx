@@ -91,6 +91,26 @@ const Team = () => {
     <div>
       <h1>Your Team</h1>
       <h2>Current Money: ${money}</h2>
+      
+      {team.length === 0 ? (
+        <p>Pick some team members!</p>
+      ) : (
+        <ul>
+          {team.map((member, index) => (
+            <li key={index}>
+              <img src={member.img} alt={member.name} />
+              <div>
+                <h3>{member.name}</h3>
+                <p>Price: ${member.price}</p>
+                <p>Strength: {member.strength}</p>
+                <p>Agility: {member.agility}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      
+      <h2>Available Zombie Fighters</h2>
       <ul>
         {zombieFighters.map((fighter, index) => (
           <li key={index}>
