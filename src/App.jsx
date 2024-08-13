@@ -1,9 +1,14 @@
 // src/App.jsx
+import React from 'react';
+import Team from './components/Team';
+
 
 const App = () => {
-
   return (
-    <h1>Hello world!</h1>
+    <div>
+      <h1>Hello world!</h1>
+      <Team />
+    </div>
   );
 }
 
