@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const Team = () => {
   const [team, setTeam] = useState([]);
   const [money, setMoney] = useState(100);
-  const [zombieFighters, setZombieFighters] = useState([
+  const [zombieFighters] = useState([
     {
       name: 'Survivor',
       price: 12,
@@ -81,8 +81,24 @@ const Team = () => {
   return (
     <div>
       <h1>Your Team</h1>
+      <h2>Current Money: ${money}</h2>
+      <ul>
+        {zombieFighters.map((fighter, index) => (
+          <li key={index}>
+            <img src={fighter.img} alt={fighter.name} />
+            <div>
+              <h3>{fighter.name}</h3>
+              <p>Price: ${fighter.price}</p>
+              <p>Strength: {fighter.strength}</p>
+              <p>Agility: {fighter.agility}</p>
+            </div>
+            <button>Add to Team</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
 export default Team;
+
