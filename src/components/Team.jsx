@@ -1,10 +1,11 @@
 //src/components/Team.jsx
 
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 
 const Team = () => {
   const [team, setTeam] = useState([]);
   const [money, setMoney] = useState(100);
+  const [totalStrength, setTotalStrength] = useState(0);
   const [zombieFighters] = useState([
     {
       name: 'Survivor',
@@ -80,7 +81,12 @@ const Team = () => {
 
   const handleAddFighter = (fighter) => {
     if (money >= fighter.price) {
-      setTeam([...team, fighter]);
+      setTeam((prevTeam) => {
+        const newTeam = [...prevTeam, fighter];
+        const newTotalStrength = newTeam.reduce((sum, f) => sum + f.strength, 0);
+        setTotalStrength(newTotalStrength);
+        return newTeam;
+      });
       setMoney(money - fighter.price);
     } else {
       console.log('Not enough money');
@@ -91,6 +97,7 @@ const Team = () => {
     <div>
       <h1>Your Team</h1>
       <h2>Current Money: ${money}</h2>
+      <h2>Total Team Strength: {totalStrength}</h2>
       
       {team.length === 0 ? (
         <p>Pick some team members!</p>
