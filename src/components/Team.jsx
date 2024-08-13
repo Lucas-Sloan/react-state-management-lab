@@ -78,6 +78,15 @@ const Team = () => {
     },
   ]);
 
+  const handleAddFighter = (fighter) => {
+    if (money >= fighter.price) {
+      setTeam([...team, fighter]);
+      setMoney(money - fighter.price);
+    } else {
+      console.log('Not enough money');
+    }
+  };
+
   return (
     <div>
       <h1>Your Team</h1>
@@ -92,7 +101,7 @@ const Team = () => {
               <p>Strength: {fighter.strength}</p>
               <p>Agility: {fighter.agility}</p>
             </div>
-            <button>Add to Team</button>
+            <button onClick={() => handleAddFighter(fighter)}>Add to Team</button>
           </li>
         ))}
       </ul>
