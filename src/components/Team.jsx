@@ -96,6 +96,19 @@ const Team = () => {
     }
   };
 
+  const handleRemoveFighter = (index) => {
+    setTeam((prevTeam) => {
+      const removedFighter = prevTeam[index];
+      const newTeam = prevTeam.filter((_, i) => i !== index);
+      const newTotalStrength = newTeam.reduce((sum, f) => sum + f.strength, 0);
+      const newTotalAgility = newTeam.reduce((sum, f) => sum + f.agility, 0);
+      setTotalStrength(newTotalStrength);
+      setTotalAgility(newTotalAgility);
+      setMoney(money + removedFighter.price); // Refund the price
+      return newTeam;
+    });
+  };
+
   return (
     <div>
       <h1>Your Team</h1>
@@ -116,6 +129,7 @@ const Team = () => {
                 <p>Strength: {member.strength}</p>
                 <p>Agility: {member.agility}</p>
               </div>
+              <button onClick={() => handleRemoveFighter(index)}>Remove</button>
             </li>
           ))}
         </ul>
