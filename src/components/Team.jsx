@@ -1,6 +1,7 @@
 //src/components/Team.jsx
 
 import React, { useState, } from 'react';
+import '/src/App.css';
 
 const Team = () => {
   const [team, setTeam] = useState([]);
@@ -110,49 +111,56 @@ const Team = () => {
   };
 
   return (
-    <div>
-      <h1>Your Team</h1>
-      <h2>Current Money: ${money}</h2>
-      <h2>Total Team Strength: {totalStrength}</h2>
-      <h2>Total Team Agility: {totalAgility}</h2>
-      
-      {team.length === 0 ? (
-        <p>Pick some team members!</p>
-      ) : (
-        <ul>
-          {team.map((member, index) => (
-            <li key={index}>
-              <img src={member.img} alt={member.name} />
-              <div>
-                <h3>{member.name}</h3>
-                <p>Price: ${member.price}</p>
-                <p>Strength: {member.strength}</p>
-                <p>Agility: {member.agility}</p>
-              </div>
-              <button onClick={() => handleRemoveFighter(index)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
-      
-      <h2>Available Zombie Fighters</h2>
-      <ul>
-        {zombieFighters.map((fighter, index) => (
-          <li key={index}>
-            <img src={fighter.img} alt={fighter.name} />
-            <div>
-              <h3>{fighter.name}</h3>
-              <p>Price: ${fighter.price}</p>
-              <p>Strength: {fighter.strength}</p>
-              <p>Agility: {fighter.agility}</p>
-            </div>
-            <button onClick={() => handleAddFighter(fighter)}>Add to Team</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+<div className="team-container">
+   <div className="team-section">
+     <h1>Your Team</h1>
+     <h2>Current Money: ${money}</h2>
+     <h2>Total Team Strength: {totalStrength}</h2>
+     <h2>Total Team Agility: {totalAgility}</h2>
+     
+     {team.length === 0 ? (
+       <p>Pick some team members!</p>
+     ) : (
+       <div className="team-list-wrapper">
+         <ul>
+           {team.map((member, index) => (
+             <li key={index}>
+               <img src={member.img} alt={member.name} />
+               <div>
+                 <h3>{member.name}</h3>
+                 <p>Price: ${member.price}</p>
+                 <p>Strength: {member.strength}</p>
+                 <p>Agility: {member.agility}</p>
+               </div>
+               <button onClick={() => handleRemoveFighter(index)}>Remove</button>
+             </li>
+           ))}
+         </ul>
+       </div>
+     )}
+   </div>
+   
+   <div className="available-fighters-section">
+     <h2>Available Zombie Fighters</h2>
+     <div className="fighters-list-wrapper">
+       <ul>
+         {zombieFighters.map((fighter, index) => (
+           <li key={index}>
+             <img src={fighter.img} alt={fighter.name} />
+             <div>
+               <h3>{fighter.name}</h3>
+               <p>Price: ${fighter.price}</p>
+               <p>Strength: {fighter.strength}</p>
+               <p>Agility: {fighter.agility}</p>
+             </div>
+             <button onClick={() => handleAddFighter(fighter)}>Add to Team</button>
+           </li>
+         ))}
+       </ul>
+     </div>
+   </div>
+ </div>
   );
 };
 
 export default Team;
-

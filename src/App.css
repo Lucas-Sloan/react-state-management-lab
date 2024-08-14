@@ -1,9 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.team-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-section,
+.available-fighters-section {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.team-section h2,
+.available-fighters-section h2 {
+  text-align: center;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 li {
   list-style: none;
   margin: 10px;
+  flex: 1 1 200px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, p {
+  text-align: center;
 }
